@@ -44,7 +44,7 @@ nav a:hover,nav a.active{color:var(--orange)}
    HOME PAGE
 ═══════════════════════════════════════ */
 .hero{position:relative;height:100vh;width:100%;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1719244698547-b3e6ed8ffe72?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080');background-size:cover;background-position:center;filter:blur(4px) brightness(.4) contrast(1.2);transform:scale(1.1)}
+.hero-bg{position:absolute;inset:0;background-image:url('./assets/images/covers/hero.jpg');background-size:cover;background-position:center;filter:blur(4px) brightness(.4) contrast(1.2);transform:scale(1.1)}
 .hero-noise{position:absolute;inset:0;opacity:.4;mix-blend-mode:overlay;pointer-events:none}
 .hero-grad{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.3),transparent,#0a0a0a)}
 .hero-content{position:relative;z-index:10;text-align:center;padding:0 24px}
@@ -81,12 +81,20 @@ nav a:hover,nav a.active{color:var(--orange)}
 /* INSTAGRAM */
 .instagram{padding:120px 96px;background:var(--black);border-top:1px solid rgba(255,255,255,.05)}
 .instagram-inner{max-width:1280px;margin:0 auto}
-.instagram-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:48px}
-.instagram-link{font-size:.6rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--orange)}
+.instagram-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;gap:24px}
+.instagram-title-block{display:flex;flex-direction:column;gap:16px}
+.instagram-title{display:flex;align-items:center;gap:14px}
+.instagram-title svg{width:28px;height:28px;flex-shrink:0;color:var(--orange)}
+.instagram-title h2{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;letter-spacing:.02em;text-transform:uppercase;color:var(--white);margin:0}
+.instagram-link{font-size:.6rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);white-space:nowrap;transition:opacity .2s}
+.instagram-link:hover{opacity:.7}
 .instagram-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
-.ig-cell{aspect-ratio:1;background:#1a1a1a;overflow:hidden}
-.ig-cell img{width:100%;height:100%;object-fit:cover;filter:brightness(.8) contrast(1.1);transition:filter .15s}
-.ig-cell:hover img{filter:brightness(1) contrast(1.1)}
+.ig-cell{aspect-ratio:1;background:#1a1a1a;overflow:hidden;display:block;position:relative}
+.ig-cell img{width:100%;height:100%;object-fit:cover;filter:brightness(.8) contrast(1.1);transition:filter .25s,transform .35s}
+.ig-cell:hover img{filter:brightness(1) contrast(1.1);transform:scale(1.04)}
+.ig-cell-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .25s;background:rgba(0,0,0,.35)}
+.ig-cell-overlay svg{color:#fff;width:28px;height:28px}
+.ig-cell:hover .ig-cell-overlay{opacity:1}
 
 /* FOOTER */
 footer{padding:160px 96px;background:var(--black);border-top:1px solid rgba(255,255,255,.05)}
@@ -150,6 +158,8 @@ footer .inner{max-width:1280px;margin:0 auto}
 .scroll-nav-btn:hover{background:var(--orange);border-color:var(--orange)}
 .scroll-nav-btn.prev{left:12px}
 .scroll-nav-btn.next{right:12px}
+.tab-desc{padding:20px 0 4px;max-width:560px}
+.tab-desc p{font-family:'Inter',sans-serif;font-size:.8rem;font-weight:300;line-height:1.7;color:rgba(255,255,255,.3)}
 .work-footer{padding:0 96px 64px;max-width:1280px;margin:0 auto}
 .work-footer-inner{border-top:1px solid rgba(255,255,255,.05);padding-top:48px}
 .work-footer p{font-size:.5rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.15)}
@@ -225,8 +235,9 @@ footer .inner{max-width:1280px;margin:0 auto}
 .inquire-marker .m-line{width:24px;height:1px;background:rgba(255,107,43,.5)}
 .inquire-marker p{font-size:.5rem;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,107,43,.5)}
 .inquire-body{font-family:'Inter',sans-serif;font-size:.85rem;font-weight:400;color:rgba(255,255,255,.4);margin-bottom:24px}
-.inquire-email{display:inline-flex;align-items:center;gap:12px;font-family:'Inter',sans-serif;font-size:.9rem;font-weight:400;letter-spacing:.025em;color:rgba(255,255,255,.6);border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:4px;transition:color .2s,border-color .2s}
-.inquire-email:hover{color:var(--orange);border-color:rgba(255,107,43,.4)}
+.inquire-email{display:inline-flex;align-items:center;gap:12px;font-family:'Inter',sans-serif;font-size:.9rem;font-weight:400;letter-spacing:.025em;color:rgba(255,255,255,.6);text-decoration:none;transition:color .2s}
+.inquire-email:hover{color:var(--orange)}
+.info-social-section{padding:0 96px 80px;max-width:1280px;margin:0 auto}
 .info-footer{border-top:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding:32px 96px;max-width:1280px;margin:0 auto}
 .info-footer p{font-size:.5rem;font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.15)}
 .info-footer p.loc{font-family:'Inter',sans-serif;text-transform:none;letter-spacing:0}
@@ -258,6 +269,169 @@ footer .inner{max-width:1280px;margin:0 auto}
 .logo-cloud-item{display:flex;align-items:center;justify-content:center;opacity:.2;transition:opacity .4s;cursor:default;filter:brightness(0) invert(1)}
 .logo-cloud-item:hover{opacity:.55}
 .logo-cloud-item img,.logo-cloud-item svg{height:22px;width:auto;max-width:100px;display:block}
+
+/* ── MOBILE NAV TOGGLE ── */
+.nav-toggle{display:none;flex-direction:column;gap:5px;padding:8px;cursor:pointer;z-index:60;background:none;border:none}
+.nav-toggle span{display:block;width:22px;height:1.5px;background:var(--white);transition:transform .3s,opacity .3s,background .2s}
+.nav-toggle.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-menu{position:fixed;inset:0;z-index:45;background:rgba(10,10,10,.97);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(8px)}
+.mobile-menu.open{opacity:1;pointer-events:auto}
+.mobile-menu a{font-size:2.2rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35);transition:color .2s;padding:12px 0}
+.mobile-menu a:hover,.mobile-menu a.active{color:var(--white)}
+.mobile-menu .menu-divider{width:32px;height:1px;background:rgba(255,107,43,.3);margin:8px 0}
+.mobile-menu .menu-contact{font-size:.7rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--orange);margin-top:24px}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE — TABLET (≤1024px)
+═══════════════════════════════════════ */
+@media(max-width:1024px){
+  header{padding:0 32px}
+  .value-prop{padding:120px 48px}
+  .value-inner{gap:56px}
+  .portfolio{padding:120px 48px}
+  .portfolio-grid{grid-template-columns:repeat(2,1fr)}
+  .instagram{padding:80px 48px}
+  .instagram-grid{grid-template-columns:repeat(3,1fr)}
+  footer{padding:120px 48px}
+  .work-hero{padding:120px 48px 48px}
+  .work-tabs{padding:0 48px}
+  .work-gallery{padding:24px 48px 100px}
+  .work-footer{padding:0 48px 48px}
+  .archives-hero{padding:100px 48px 40px}
+  .cat-bar-inner{padding:0 48px}
+  .arch-grid{grid-template-columns:repeat(3,1fr)}
+  .info-hero{padding:120px 48px 60px}
+  .info-diptych{grid-template-columns:1fr 1fr;gap:56px;padding:0 48px 120px}
+  .disciplines-section{padding:0 48px 120px}
+  .disciplines-grid{grid-template-columns:repeat(2,1fr);gap:40px}
+  .trusted-section{padding:0 48px 120px}
+  .inquire-section{padding:60px 48px}
+  .info-social-section{padding:0 48px 60px}
+  .info-footer{padding:24px 48px}
+  .trusted-by-header{padding:0 48px}
+  .trusted-by-note{padding:0 48px}
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE — MOBILE (≤768px)
+═══════════════════════════════════════ */
+@media(max-width:768px){
+  /* nav */
+  .nav-toggle{display:flex}
+  nav{display:none}
+  header{padding:0 20px}
+
+  /* hero */
+  .hero-title{font-size:clamp(26px,9vw,48px);letter-spacing:.04em}
+  .hero-eyebrow{font-size:.55rem;letter-spacing:.3em;margin-bottom:16px}
+  .hero-subtitle{font-size:.7rem;letter-spacing:.25em}
+  .hero-div{margin:32px auto 12px}
+
+  /* value prop */
+  .value-prop{padding:80px 20px}
+  .value-inner{grid-template-columns:1fr;gap:40px}
+  .value-heading{font-size:1.75rem}
+  .value-body{max-width:100%}
+
+  /* portfolio */
+  .portfolio{padding:80px 20px}
+  .portfolio-grid{grid-template-columns:1fr;gap:16px}
+  .p-card{aspect-ratio:4/3}
+
+  /* trusted by */
+  .trusted-by{padding:60px 0 80px}
+  .trusted-by-header{padding:0 20px;margin-bottom:32px}
+  .trusted-by-note{padding:0 20px;margin-top:32px}
+
+  /* instagram */
+  .instagram{padding:80px 20px}
+  .instagram-grid{grid-template-columns:repeat(2,1fr)}
+  .instagram-header{flex-direction:column;align-items:flex-start;gap:16px;margin-bottom:32px}
+  .instagram-title h2{font-size:1.4rem}
+
+  /* footer / contact */
+  footer{padding:80px 20px}
+  .contact-headline{font-size:clamp(1.8rem,7vw,3rem);margin-top:32px}
+  .contact-row{flex-direction:column;align-items:flex-start;gap:32px;margin-top:32px}
+  .social-links{gap:20px;flex-wrap:wrap}
+  .footer-bottom{flex-direction:column;gap:8px;margin-top:60px}
+
+  /* work page */
+  .work-hero{padding:88px 20px 40px}
+  .page-title{font-size:clamp(2rem,8vw,4rem)}
+  .work-tabs{padding:0 20px}
+  .tab-bar{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .tab-btn{padding:14px 16px;font-size:.6rem;white-space:nowrap}
+  .work-gallery{padding:20px 20px 80px}
+  .scroll-card{width:clamp(220px,72vw,300px)}
+  .work-footer{padding:0 20px 40px}
+
+  /* archives */
+  .archives-hero{padding:88px 20px 32px}
+  .cat-bar-inner{padding:0 20px;overflow-x:auto}
+  .cat-btn{padding:16px 16px;letter-spacing:.15em;white-space:nowrap}
+  .arch-grid{grid-template-columns:repeat(2,1fr)}
+
+  /* info page */
+  .info-hero{padding:88px 20px 48px}
+  .info-h1{font-size:clamp(1.8rem,8vw,3.2rem)}
+  .info-diptych{grid-template-columns:1fr;gap:40px;padding:0 20px 80px}
+  .portrait-inner{aspect-ratio:4/3}
+  .portrait-bracket{display:none}
+  .disciplines-section{padding:0 20px 80px}
+  .disciplines-grid{grid-template-columns:repeat(2,1fr);gap:28px}
+  .disciplines-h2{font-size:1.4rem;margin-bottom:40px}
+  .trusted-section{padding:0 20px 80px}
+  .logo-cloud-grid{gap:28px 40px}
+  .inquire-section{padding:48px 20px}
+  .info-social-section{padding:0 20px 48px}
+  .info-footer{padding:24px 20px}
+
+  /* scroll-top btn */
+  .scroll-top{bottom:20px;right:20px;width:40px;height:40px}
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE — SMALL MOBILE (≤480px)
+═══════════════════════════════════════ */
+@media(max-width:480px){
+  .hero-title{font-size:clamp(22px,8.5vw,34px)}
+  .portfolio-grid{grid-template-columns:1fr}
+  .p-card{aspect-ratio:3/2}
+  .arch-grid{grid-template-columns:1fr}
+  .instagram-grid{grid-template-columns:repeat(2,1fr)}
+  .disciplines-grid{grid-template-columns:1fr}
+  .scroll-card{width:clamp(200px,80vw,300px)}
+  .value-heading{font-size:1.5rem}
+  .mobile-menu a{font-size:1.8rem}
+}
+
+/* ── LIGHTBOX ── */
+.lightbox{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s}
+.lightbox.open{opacity:1;pointer-events:auto}
+.lb-backdrop{position:absolute;inset:0;background:rgba(5,5,5,.96)}
+.lb-img-wrap{position:relative;z-index:10;display:flex;align-items:center;justify-content:center;max-width:90vw;max-height:85vh}
+.lb-img-wrap img{max-width:90vw;max-height:82vh;object-fit:contain;display:block;user-select:none}
+.lb-caption{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);z-index:11;font-size:.58rem;font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:rgba(255,255,255,.35);white-space:nowrap;pointer-events:none}
+.lb-close{position:fixed;top:20px;right:20px;z-index:11;width:40px;height:40px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:var(--white);font-size:.85rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s,border-color .2s}
+.lb-close:hover{background:var(--orange);border-color:var(--orange)}
+.lb-nav{position:fixed;top:50%;transform:translateY(-50%);z-index:11;width:48px;height:72px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:var(--white);font-size:1.8rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s,border-color .2s;font-weight:300;line-height:1}
+.lb-nav:hover{background:rgba(255,107,43,.25);border-color:rgba(255,107,43,.4)}
+.lb-prev{left:12px}
+.lb-next{right:12px}
+.lb-counter{position:fixed;top:24px;left:50%;transform:translateX(-50%);z-index:11;font-size:.55rem;font-weight:500;letter-spacing:.25em;color:rgba(255,255,255,.25);pointer-events:none}
+/* p-card clickable */
+.p-card{cursor:pointer}
+/* arch-cell and scroll-card lightbox cursor */
+.arch-cell{cursor:zoom-in}
+.scroll-card{cursor:zoom-in}
+@media(max-width:768px){
+  .lb-nav{display:none}
+  .lb-close{top:12px;right:12px;width:36px;height:36px}
+  .lb-img-wrap img{max-width:96vw;max-height:75vh}
+}
 </style>
 </head>
 <body>
@@ -271,7 +445,19 @@ footer .inner{max-width:1280px;margin:0 auto}
     <a href="#info"       id="nav-info"     onclick="navigate('info')">Info</a>
     <a href="#contact"    id="nav-contact"  onclick="navigate('home');setTimeout(()=>document.getElementById('contact-section').scrollIntoView({behavior:'smooth'}),100)">Contact</a>
   </nav>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" onclick="toggleMobileMenu()">
+    <span></span><span></span><span></span>
+  </button>
 </header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#work"     id="mnav-work"     onclick="navigate('work');toggleMobileMenu()">Work</a>
+  <a href="#archives" id="mnav-archives" onclick="navigate('archives');toggleMobileMenu()">Archives</a>
+  <a href="#info"     id="mnav-info"     onclick="navigate('info');toggleMobileMenu()">Info</a>
+  <div class="menu-divider"></div>
+  <a href="#contact"  class="menu-contact" onclick="navigate('home');toggleMobileMenu();setTimeout(()=>document.getElementById('contact-section').scrollIntoView({behavior:'smooth'}),100)">Contact</a>
+</div>
 
 <!-- ═══ HOME PAGE ═══ -->
 <div id="page-home" class="page active">
@@ -299,9 +485,9 @@ footer .inner{max-width:1280px;margin:0 auto}
         <p class="value-body">From the dust of the desert to the intimacy of the aisle. Every frame tells a story that transcends its genre.</p>
       </div>
       <div style="padding-top:16px">
-        <div class="accolade"><p class="accolade-label">Featured in</p><p class="accolade-value">Dakar Rally Official, GQ, Vogue Weddings</p></div>
-        <div class="accolade"><p class="accolade-label">Commissions</p><p class="accolade-value">Global — 40+ countries across 6 continents</p></div>
-        <div class="accolade"><p class="accolade-label">Exhibitions</p><p class="accolade-value">Paris Photo, Leica Gallery, Art Basel</p></div>
+        <div class="accolade"><p class="accolade-label">Featured in</p><p class="accolade-value">Dakar Rally Official, Global Motorcycle Expeditions</p></div>
+        <div class="accolade"><p class="accolade-label">Commissions</p><p class="accolade-value">Leading Global Brands — Triumph, Harley Davidson, Ducati and Royal Enfield</p></div>
+        <div class="accolade"><p class="accolade-label">An Authentic Style</p><p class="accolade-value">Crafted for popular global brands with extraordinary visuals</p></div>
       </div>
     </div>
   </section>
@@ -311,20 +497,20 @@ footer .inner{max-width:1280px;margin:0 auto}
     <div class="portfolio-inner">
       <div class="section-marker"><div class="marker-line"></div><span class="marker-label">Portfolio</span></div>
       <div class="portfolio-grid">
-        <div class="p-card">
-          <img src="https://images.unsplash.com/photo-1764053000961-9213e3cf5ec7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800" alt="Automotive">
+        <div class="p-card" onclick="navigate('archives','Automotive')">
+          <img src="./assets/images/covers/automotive.jpg" alt="Automotive">
           <div class="p-card-noise noise"></div><div class="p-card-grad"></div>
           <div class="p-card-info"><p class="p-card-sub">Rally &amp; Expedition</p><h3 class="p-card-title">AUTOMOTIVE</h3><div class="p-card-accent"></div></div>
         </div>
-        <div class="p-card">
-          <img src="https://images.unsplash.com/photo-1761005653827-9cd95fa1faee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800" alt="Lifestyle">
+        <div class="p-card" onclick="navigate('archives','Lifestyle')">
+          <img src="./assets/images/covers/lifestyle.jpg" alt="Lifestyle">
           <div class="p-card-noise noise"></div><div class="p-card-grad"></div>
-          <div class="p-card-info"><p class="p-card-sub">Product &amp; Technology</p><h3 class="p-card-title">LIFESTYLE</h3><div class="p-card-accent"></div></div>
+          <div class="p-card-info"><p class="p-card-sub">Timeless Living</p><h3 class="p-card-title">LIFESTYLE</h3><div class="p-card-accent"></div></div>
         </div>
-        <div class="p-card">
-          <img src="https://images.unsplash.com/photo-1765292783761-cd5689dbdc91?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800" alt="Travel">
+        <div class="p-card" onclick="navigate('work','travel')">
+          <img src="./assets/images/covers/travel.jpg" alt="Travel">
           <div class="p-card-noise noise"></div><div class="p-card-grad"></div>
-          <div class="p-card-info"><p class="p-card-sub">Weddings &amp; Portraits</p><h3 class="p-card-title">TRAVEL</h3><div class="p-card-accent"></div></div>
+          <div class="p-card-info"><p class="p-card-sub">Places &amp; Perspectives</p><h3 class="p-card-title">TRAVEL</h3><div class="p-card-accent"></div></div>
         </div>
       </div>
     </div>
@@ -354,18 +540,52 @@ footer .inner{max-width:1280px;margin:0 auto}
   <section class="instagram">
     <div class="instagram-inner">
       <div class="instagram-header">
-        <div class="section-marker" style="margin-bottom:0"><div class="marker-line"></div><span class="marker-label">From the field / Recent</span></div>
-        <a href="#" class="instagram-link">@dilshad.majeeth ↗</a>
+        <div class="instagram-title-block">
+          <div class="section-marker" style="margin-bottom:0"><div class="marker-line"></div><span class="marker-label">From the field / Latest posts</span></div>
+          <div class="instagram-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+            <h2>On Instagram</h2>
+          </div>
+        </div>
+        <a href="https://www.instagram.com/dilshad.majeeth" target="_blank" rel="noopener noreferrer" class="instagram-link">@dilshad.majeeth ↗</a>
       </div>
       <div class="instagram-grid">
-        <div class="ig-cell"><img src="https://images.unsplash.com/photo-1764053000961-9213e3cf5ec7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt=""></div>
-        <div class="ig-cell"><img src="https://images.unsplash.com/photo-1765292783761-cd5689dbdc91?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt=""></div>
-        <div class="ig-cell"><img src="https://images.unsplash.com/photo-1719244698547-b3e6ed8ffe72?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt=""></div>
-        <div class="ig-cell"><img src="https://images.unsplash.com/photo-1761005653827-9cd95fa1faee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt=""></div>
-        <div class="ig-cell"><img src="https://images.unsplash.com/photo-1764053000961-9213e3cf5ec7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt=""></div>
-        <div class="ig-cell"><img src="https://images.unsplash.com/photo-1719244698547-b3e6ed8ffe72?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt=""></div>
-        <div class="ig-cell"><img src="https://images.unsplash.com/photo-1765292783761-cd5689dbdc91?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt=""></div>
-        <div class="ig-cell"><img src="https://images.unsplash.com/photo-1761005653827-9cd95fa1faee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt=""></div>
+        <a href="https://www.instagram.com/dilshad.majeeth" target="_blank" rel="noopener noreferrer" class="ig-cell">
+          <img src="./assets/images/instagram-feed/img001.gif" alt="Instagram post by @dilshad.majeeth">
+          <div class="ig-cell-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+        </a>
+        <a href="https://www.instagram.com/dilshad.majeeth" target="_blank" rel="noopener noreferrer" class="ig-cell">
+          <img src="./assets/images/instagram-feed/img002.jpg" alt="Instagram post by @dilshad.majeeth">
+          <div class="ig-cell-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+        </a>
+        <a href="https://www.instagram.com/dilshad.majeeth" target="_blank" rel="noopener noreferrer" class="ig-cell">
+          <img src="./assets/images/instagram-feed/img003.jpg" alt="Instagram post by @dilshad.majeeth">
+          <div class="ig-cell-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+        </a>
+        <a href="https://www.instagram.com/dilshad.majeeth" target="_blank" rel="noopener noreferrer" class="ig-cell">
+          <img src="./assets/images/instagram-feed/img004.jpg" alt="Instagram post by @dilshad.majeeth">
+          <div class="ig-cell-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+        </a>
+        <a href="https://www.instagram.com/dilshad.majeeth" target="_blank" rel="noopener noreferrer" class="ig-cell">
+          <img src="./assets/images/instagram-feed/img005.jpg" alt="Instagram post by @dilshad.majeeth">
+          <div class="ig-cell-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+        </a>
+        <a href="https://www.instagram.com/dilshad.majeeth" target="_blank" rel="noopener noreferrer" class="ig-cell">
+          <img src="./assets/images/instagram-feed/img006.jpg" alt="Instagram post by @dilshad.majeeth">
+          <div class="ig-cell-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+        </a>
+        <a href="https://www.instagram.com/dilshad.majeeth" target="_blank" rel="noopener noreferrer" class="ig-cell">
+          <img src="./assets/images/instagram-feed/img007.jpg" alt="Instagram post by @dilshad.majeeth">
+          <div class="ig-cell-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+        </a>
+        <a href="https://www.instagram.com/dilshad.majeeth" target="_blank" rel="noopener noreferrer" class="ig-cell">
+          <img src="./assets/images/instagram-feed/img008.jpg" alt="Instagram post by @dilshad.majeeth">
+          <div class="ig-cell-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+        </a>
       </div>
     </div>
   </section>
@@ -374,17 +594,17 @@ footer .inner{max-width:1280px;margin:0 auto}
   <footer id="contact-section">
     <div class="inner">
       <div class="section-marker"><div class="marker-line"></div><span class="marker-label">Contact</span></div>
-      <h2 class="contact-headline">Let's create<br>something <span class="accent">raw.</span></h2>
+      <h2 class="contact-headline">Let's narrate<br>something <span class="accent">raw.</span></h2>
       <div class="contact-row">
         <a href="mailto:mail@narrativesbydm.com" class="contact-email">
           mail@narrativesbydm.com
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
         </a>
         <div class="social-links">
-          <a href="#" class="social-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg><span>Instagram</span></a>
-          <a href="#" class="social-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-1.96C18.88 4 12 4 12 4s-6.88 0-8.6.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.94 1.96C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg><span>Youtube</span></a>
-          <a href="#" class="social-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span>LinkedIn</span></a>
-          <a href="#" class="social-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M6.947 4.084C7.595 4.072 8.243 4.139 8.876 4.282c.532.116 1.038.333 1.49.637.417.304.747.711.957 1.182.241.58.357 1.204.341 1.831.027.689-.149 1.37-.506 1.96-.376.557-.896 1.001-1.504 1.287.825.222 1.544.732 2.027 1.437.464.747.697 1.615.671 2.494.015.701-.13 1.396-.424 2.033-.272.555-.67 1.039-1.163 1.413-.506.37-1.077.643-1.682.807-.628.174-1.277.261-1.929.259H0V4.084h6.947zm-.413 6.285c.51.021 1.011-.131 1.423-.432.197-.175.35-.394.448-.639.097-.245.136-.51.113-.772.013-.307-.048-.613-.178-.891-.11-.221-.282-.406-.495-.533-.215-.14-.457-.233-.71-.274-.275-.053-.555-.078-.835-.073H3.241v4.63h3.293zm.178 6.615c.308.004.616-.03.916-.1.274-.061.534-.173.766-.331.227-.161.41-.374.533-.626.143-.316.208-.662.191-1.008.031-.316-.01-.635-.121-.932-.111-.297-.289-.565-.52-.783-.489-.36-1.089-.539-1.696-.503H3.241v4.283h3.471z"/><path d="M16.969 16.927c.254.235.554.417.88.533.327.117.674.165 1.02.144.549.014 1.087-.153 1.531-.475.362-.235.636-.583.78-.99H23.765c-.276 1.158-.948 2.183-1.901 2.897-.914.607-2.994.914-2.991.88-.783.01-1.56-.137-2.284-.433-.656-.274-1.244-.687-1.723-1.211-.477-.549-.844-1.186-1.08-1.874-.265-.77-.395-1.579-.381-2.393-.005-.8.129-1.595.396-2.349.358-1.061 1.044-1.981 1.958-2.629.914-.647 2.009-.988 3.129-.975.827-.017 1.645.177 2.376.563.661.363 1.231.871 1.668 1.485.447.645.767 1.369.943 2.133.194.821.263 1.666.205 2.508h-7.48c-.062.79.184 1.574.688 2.187zm3.378-5.91c-.216-.215-.475-.383-.76-.49-.284-.107-.589-.151-.885-.13-.403-.015-.803.074-1.161.259-.284.157-.533.367-.736.619-.18.237-.315.506-.396.793-.073.239-.119.486-.136.735h4.769c-.042-.65-.279-1.272-.678-1.785l-.002-.001z"/><path d="M15.644 5.122H21.62V6.65H15.644z"/></svg><span>Behance</span></a>
+          <a href="https://www.instagram.com/dilshad.majeeth" target="_blank" rel="noopener noreferrer" class="social-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg><span>Instagram</span></a>
+          <a href="https://www.youtube.com/@narrativesbydm5019" target="_blank" rel="noopener noreferrer" class="social-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-1.96C18.88 4 12 4 12 4s-6.88 0-8.6.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.94 1.96C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg><span>Youtube</span></a>
+          <a href="https://www.linkedin.com/in/dilshadmajeeth" target="_blank" rel="noopener noreferrer" class="social-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span>LinkedIn</span></a>
+          <a href="https://www.behance.net/dilshadmajeeth" target="_blank" rel="noopener noreferrer" class="social-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M6.947 4.084C7.595 4.072 8.243 4.139 8.876 4.282c.532.116 1.038.333 1.49.637.417.304.747.711.957 1.182.241.58.357 1.204.341 1.831.027.689-.149 1.37-.506 1.96-.376.557-.896 1.001-1.504 1.287.825.222 1.544.732 2.027 1.437.464.747.697 1.615.671 2.494.015.701-.13 1.396-.424 2.033-.272.555-.67 1.039-1.163 1.413-.506.37-1.077.643-1.682.807-.628.174-1.277.261-1.929.259H0V4.084h6.947zm-.413 6.285c.51.021 1.011-.131 1.423-.432.197-.175.35-.394.448-.639.097-.245.136-.51.113-.772.013-.307-.048-.613-.178-.891-.11-.221-.282-.406-.495-.533-.215-.14-.457-.233-.71-.274-.275-.053-.555-.078-.835-.073H3.241v4.63h3.293zm.178 6.615c.308.004.616-.03.916-.1.274-.061.534-.173.766-.331.227-.161.41-.374.533-.626.143-.316.208-.662.191-1.008.031-.316-.01-.635-.121-.932-.111-.297-.289-.565-.52-.783-.489-.36-1.089-.539-1.696-.503H3.241v4.283h3.471z"/><path d="M16.969 16.927c.254.235.554.417.88.533.327.117.674.165 1.02.144.549.014 1.087-.153 1.531-.475.362-.235.636-.583.78-.99H23.765c-.276 1.158-.948 2.183-1.901 2.897-.914.607-2.994.914-2.991.88-.783.01-1.56-.137-2.284-.433-.656-.274-1.244-.687-1.723-1.211-.477-.549-.844-1.186-1.08-1.874-.265-.77-.395-1.579-.381-2.393-.005-.8.129-1.595.396-2.349.358-1.061 1.044-1.981 1.958-2.629.914-.647 2.009-.988 3.129-.975.827-.017 1.645.177 2.376.563.661.363 1.231.871 1.668 1.485.447.645.767 1.369.943 2.133.194.821.263 1.666.205 2.508h-7.48c-.062.79.184 1.574.688 2.187zm3.378-5.91c-.216-.215-.475-.383-.76-.49-.284-.107-.589-.151-.885-.13-.403-.015-.803.074-1.161.259-.284.157-.533.367-.736.619-.18.237-.315.506-.396.793-.073.239-.119.486-.136.735h4.769c-.042-.65-.279-1.272-.678-1.785l-.002-.001z"/><path d="M15.644 5.122H21.62V6.65H15.644z"/></svg><span>Behance</span></a>
         </div>
       </div>
       <div class="footer-bottom">
@@ -408,65 +628,68 @@ footer .inner{max-width:1280px;margin:0 auto}
 
   <div class="work-tabs">
     <div class="tab-bar">
-      <button class="tab-btn active" data-tab="gadgets" onclick="switchTab('gadgets')">Gadgets <span class="tab-count">(09)</span></button>
-      <button class="tab-btn" data-tab="emotions" onclick="switchTab('emotions')">Emotions <span class="tab-count">(10)</span></button>
-      <button class="tab-btn" data-tab="motorsports" onclick="switchTab('motorsports')">Motorsports <span class="tab-count">(09)</span></button>
+      <button class="tab-btn active" data-tab="travel" onclick="switchTab('travel')">Travel <span class="tab-count">(09)</span></button>
+      <button class="tab-btn" data-tab="lifestyle" onclick="switchTab('lifestyle')">Lifestyle <span class="tab-count">(10)</span></button>
+      <button class="tab-btn" data-tab="automotive" onclick="switchTab('automotive')">Automotive <span class="tab-count">(09)</span></button>
+    </div>
+    <div class="tab-desc" id="tab-desc">
+      <p id="tab-desc-text">Product &amp; technology stripped back to raw form — circuits, glass, and precision engineered light.</p>
     </div>
   </div>
 
   <div class="work-gallery">
     <div class="section-marker" style="margin-bottom:32px">
       <div class="marker-line"></div>
-      <span class="marker-label" id="work-collection-label">Gadgets Collection</span>
+      <span class="marker-label" id="work-collection-label">Travel Collection</span>
     </div>
 
-    <!-- GADGETS -->
-    <div class="gallery-panel active" id="panel-gadgets">
+    <!-- TRAVEL -->
+    <div class="gallery-panel active" id="panel-travel">
       <div class="scroll-wrap">
-        <button class="scroll-nav-btn prev" onclick="scrollGallery('gadgets',-1)">&#8249;</button>
-        <button class="scroll-nav-btn next" onclick="scrollGallery('gadgets',1)">&#8250;</button>
-        <div class="scroll-track scroll-hide" id="track-gadgets">
-          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:4/5"><img src="https://images.unsplash.com/photo-1631375937044-6dd5beac01d2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" alt="Dark Electronics"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>Dark Electronics</p></div><div class="card-dot"></div></div></div>
-          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:3/4"><img src="https://images.unsplash.com/photo-1698663371785-677d13f21570?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" alt="Camera Lens"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>Camera Lens</p></div><div class="card-dot"></div></div></div>
-          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:4/5"><img src="https://images.unsplash.com/photo-1768625302955-87b69bc14acd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" alt="Modern Device"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>Modern Device</p></div><div class="card-dot"></div></div></div>
-          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:16/10"><img src="https://images.unsplash.com/photo-1576057122708-9608db46b2f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" alt="Minimal Keyboard"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>Minimal Keyboard</p></div><div class="card-dot"></div></div></div>
-          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:3/4"><img src="https://images.unsplash.com/photo-1689872072441-5aed6df99448?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" alt="Audio Gear"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>Audio Gear</p></div><div class="card-dot"></div></div></div>
-          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:4/5"><img src="https://images.unsplash.com/photo-1759820940702-ad8f5490a88a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" alt="Gaming Controller"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>Gaming Controller</p></div><div class="card-dot"></div></div></div>
-          <div class="view-more-card" id="vm-gadgets"><div class="vm-btn" onclick="expandGallery('gadgets')"><div class="vm-icon">+</div><span class="vm-label">View More</span><span class="vm-count">+3 images</span></div></div>
+        <button class="scroll-nav-btn prev" onclick="scrollGallery('travel',-1)">&#8249;</button>
+        <button class="scroll-nav-btn next" onclick="scrollGallery('travel',1)">&#8250;</button>
+        <div class="scroll-track scroll-hide" id="track-travel">
+          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:4/5"><img src="./assets/images/travel/Buda-1.jpg" alt="Budapest"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>Budapest</p></div><div class="card-dot"></div></div></div>
+          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:3/4"><img src="./assets/images/travel/Prague-1.jpg" alt="Prague"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>Prague</p></div><div class="card-dot"></div></div></div>
+          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:4/5"><img src="./assets/images/travel/Venice-1.jpg" alt="Venice"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>Venice</p></div><div class="card-dot"></div></div></div>
+          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:16/10"><img src="./assets/images/travel/Switz-1.jpg" alt="Switzerland"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>Switzerland</p></div><div class="card-dot"></div></div></div>
+          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:3/4"><img src="./assets/images/travel/Verona-1.jpg" alt="Verona"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>Verona</p></div><div class="card-dot"></div></div></div>
+          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:4/5"><img src="./assets/images/travel/Buda-5.jpg" alt="Budapest II"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>Budapest II</p></div><div class="card-dot"></div></div></div>
+          <div class="view-more-card" id="vm-travel"><div class="vm-btn" onclick="expandGallery('travel')"><div class="vm-icon">+</div><span class="vm-label">View More</span><span class="vm-count">+3 images</span></div></div>
         </div>
       </div>
     </div>
 
-    <!-- EMOTIONS -->
-    <div class="gallery-panel" id="panel-emotions">
+    <!-- LIFESTYLE -->
+    <div class="gallery-panel" id="panel-lifestyle">
       <div class="scroll-wrap">
-        <button class="scroll-nav-btn prev" onclick="scrollGallery('emotions',-1)">&#8249;</button>
-        <button class="scroll-nav-btn next" onclick="scrollGallery('emotions',1)">&#8250;</button>
-        <div class="scroll-track scroll-hide" id="track-emotions">
-          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:3/4"><img src="https://images.unsplash.com/photo-1761211488173-a7154314420a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" alt="Intimate Wedding"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>Intimate Wedding</p></div><div class="card-dot"></div></div></div>
-          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:4/5"><img src="https://images.unsplash.com/photo-1769050737627-dcf7eaf5eded?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" alt="Romantic Embrace"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>Romantic Embrace</p></div><div class="card-dot"></div></div></div>
-          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:4/5"><img src="https://images.unsplash.com/photo-1624706477325-0653108de3e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" alt="Tears of Joy"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>Tears of Joy</p></div><div class="card-dot"></div></div></div>
-          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:3/4"><img src="https://images.unsplash.com/photo-1640162558363-88cb21a08021?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" alt="Family Reunion"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>Family Reunion</p></div><div class="card-dot"></div></div></div>
-          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:16/10"><img src="https://images.unsplash.com/photo-1758810410699-2dc1daec82dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" alt="Silhouette Sunset"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>Silhouette Sunset</p></div><div class="card-dot"></div></div></div>
-          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:4/5"><img src="https://images.unsplash.com/photo-1769527529868-6cf74900c6e4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" alt="Ring Exchange"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>Ring Exchange</p></div><div class="card-dot"></div></div></div>
-          <div class="view-more-card" id="vm-emotions"><div class="vm-btn" onclick="expandGallery('emotions')"><div class="vm-icon">+</div><span class="vm-label">View More</span><span class="vm-count">+4 images</span></div></div>
+        <button class="scroll-nav-btn prev" onclick="scrollGallery('lifestyle',-1)">&#8249;</button>
+        <button class="scroll-nav-btn next" onclick="scrollGallery('lifestyle',1)">&#8250;</button>
+        <div class="scroll-track scroll-hide" id="track-lifestyle">
+          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:3/4"><img src="./assets/images/lifestyle/DMF00630.jpg" alt="Candid"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>Candid</p></div><div class="card-dot"></div></div></div>
+          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:4/5"><img src="./assets/images/lifestyle/DMF07892.jpg" alt="Portrait"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>Portrait</p></div><div class="card-dot"></div></div></div>
+          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:4/5"><img src="./assets/images/lifestyle/DMF08141.jpg" alt="Golden Hour"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>Golden Hour</p></div><div class="card-dot"></div></div></div>
+          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:3/4"><img src="./assets/images/lifestyle/DSC02363.jpg" alt="Gaze"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>Gaze</p></div><div class="card-dot"></div></div></div>
+          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:16/10"><img src="./assets/images/lifestyle/DSC02755.jpg" alt="Presence"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>Presence</p></div><div class="card-dot"></div></div></div>
+          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:4/5"><img src="./assets/images/lifestyle/DSC08287.jpg" alt="Still"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>Still</p></div><div class="card-dot"></div></div></div>
+          <div class="view-more-card" id="vm-lifestyle"><div class="vm-btn" onclick="expandGallery('lifestyle')"><div class="vm-icon">+</div><span class="vm-label">View More</span><span class="vm-count">+4 images</span></div></div>
         </div>
       </div>
     </div>
 
-    <!-- MOTORSPORTS -->
-    <div class="gallery-panel" id="panel-motorsports">
+    <!-- AUTOMOTIVE -->
+    <div class="gallery-panel" id="panel-automotive">
       <div class="scroll-wrap">
-        <button class="scroll-nav-btn prev" onclick="scrollGallery('motorsports',-1)">&#8249;</button>
-        <button class="scroll-nav-btn next" onclick="scrollGallery('motorsports',1)">&#8250;</button>
-        <div class="scroll-track scroll-hide" id="track-motorsports">
-          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:4/5"><img src="https://images.unsplash.com/photo-1764053001013-3c62d760289b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" alt="Rally Dirt"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>Rally Dirt</p></div><div class="card-dot"></div></div></div>
-          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:3/4"><img src="https://images.unsplash.com/photo-1746690818493-128cb32d23a9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" alt="Motocross Jump"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>Motocross Jump</p></div><div class="card-dot"></div></div></div>
-          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:16/10"><img src="https://images.unsplash.com/photo-1664911200744-8c3a496baa2a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" alt="Circuit Racing"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>Circuit Racing</p></div><div class="card-dot"></div></div></div>
-          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:4/5"><img src="https://images.unsplash.com/photo-1764053000942-9ea3764c8b91?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" alt="Desert Rally"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>Desert Rally</p></div><div class="card-dot"></div></div></div>
-          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:3/4"><img src="https://images.unsplash.com/photo-1569932353341-b518d82f8a54?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" alt="Rider Closeup"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>Rider Closeup</p></div><div class="card-dot"></div></div></div>
-          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:4/5"><img src="https://images.unsplash.com/photo-1622123256821-845ffeff1f09?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" alt="Highway Cruiser"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>Highway Cruiser</p></div><div class="card-dot"></div></div></div>
-          <div class="view-more-card" id="vm-motorsports"><div class="vm-btn" onclick="expandGallery('motorsports')"><div class="vm-icon">+</div><span class="vm-label">View More</span><span class="vm-count">+3 images</span></div></div>
+        <button class="scroll-nav-btn prev" onclick="scrollGallery('automotive',-1)">&#8249;</button>
+        <button class="scroll-nav-btn next" onclick="scrollGallery('automotive',1)">&#8250;</button>
+        <div class="scroll-track scroll-hide" id="track-automotive">
+          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:4/5"><img src="./assets/images/automotive/DMF02686.jpg" alt="Rally Stage"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>Rally Stage</p></div><div class="card-dot"></div></div></div>
+          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:3/4"><img src="./assets/images/automotive/DMFS7414.jpg" alt="Hilux Safari"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>Hilux Safari</p></div><div class="card-dot"></div></div></div>
+          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:16/10"><img src="./assets/images/automotive/ARP03527.jpg" alt="Expedition"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>Expedition</p></div><div class="card-dot"></div></div></div>
+          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:4/5"><img src="./assets/images/automotive/DMFS8931.jpg" alt="Speed"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>Speed</p></div><div class="card-dot"></div></div></div>
+          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:3/4"><img src="./assets/images/automotive/DMF03794.jpg" alt="On Track"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>On Track</p></div><div class="card-dot"></div></div></div>
+          <div class="scroll-card"><div class="img-wrap" style="aspect-ratio:4/5"><img src="./assets/images/automotive/Statics-2.jpg" alt="Static Shot"><div class="img-grad"></div><div class="card-noise noise"></div><div class="card-title"><p>Static Shot</p></div><div class="card-dot"></div></div></div>
+          <div class="view-more-card" id="vm-automotive"><div class="vm-btn" onclick="expandGallery('automotive')"><div class="vm-icon">+</div><span class="vm-label">View More</span><span class="vm-count">+3 images</span></div></div>
         </div>
       </div>
     </div>
@@ -482,8 +705,9 @@ footer .inner{max-width:1280px;margin:0 auto}
 <div id="page-archives" class="page">
 
   <div class="archives-hero">
-    <div class="section-marker"><div class="marker-line"></div><span class="marker-label">Archives</span></div>
-    <h1 style="font-size:clamp(1.8rem,4vw,3.5rem);font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--white)">Portfolio.</h1>
+    <div class="section-marker"><div class="marker-line"></div><span class="marker-label">Full Archive</span></div>
+    <h1 style="font-size:clamp(1.8rem,4vw,3.5rem);font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--white)">The Collection.</h1>
+    <p style="font-size:.65rem;font-weight:400;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-top:16px">60 images across three disciplines</p>
   </div>
 
   <div class="cat-bar">
@@ -515,11 +739,10 @@ footer .inner{max-width:1280px;margin:0 auto}
   <div class="info-diptych">
     <div class="portrait-wrap">
       <div class="portrait-inner">
-        <img src="https://images.unsplash.com/photo-1547619292-870fe4aeadb8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Dilshad Majeeth — photographer in the field">
+        <img src="./assets/images/covers/portrait.jpg" alt="Dilshad Majeeth — photographer in the field">
         <div class="portrait-noise noise"></div>
         <div class="portrait-grad"></div>
       </div>
-      <div class="portrait-bracket"></div>
     </div>
     <div class="bio-col">
       <div class="the-person-marker"><div class="m-line"></div><p>The Person</p></div>
@@ -528,6 +751,7 @@ footer .inner{max-width:1280px;margin:0 auto}
         <p class="bio-line">Documents stories where grit meets grace.</p>
         <p class="bio-line">Work ranges from the 120dB chaos of rally stages to the silent exchange of rings at a destination wedding.</p>
         <p class="bio-line">Also fascinated by the cold, precise lines of modern technology.</p>
+        <p class="bio-line" style="margin-top:8px;color:rgba(255,255,255,.35)">Please drop an email over and I'll get back to you.<br>If it's urgent, please call me. <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin:0 4px"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.36 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+919400087444" style="color:rgba(255,107,43,.8);text-decoration:none;letter-spacing:.02em">+91 94000 87444</a></p>
       </div>
       <div class="bio-divider"></div>
       <p class="approach-label">Approach:</p>
@@ -541,7 +765,7 @@ footer .inner{max-width:1280px;margin:0 auto}
     <h2 class="disciplines-h2">Disciplines</h2>
     <div class="disciplines-grid">
       <div class="discipline-col"><div class="discipline-rule"></div><h3 class="discipline-title">Motorsports</h3><div class="discipline-tags"><p class="discipline-tag">Documentary</p><p class="discipline-tag">Expedition</p><p class="discipline-tag">Grit</p></div></div>
-      <div class="discipline-col"><div class="discipline-rule"></div><h3 class="discipline-title">Weddings</h3><div class="discipline-tags"><p class="discipline-tag">Candid</p><p class="discipline-tag">Editorial</p><p class="discipline-tag">Intimate</p></div></div>
+      <div class="discipline-col"><div class="discipline-rule"></div><h3 class="discipline-title">Travel</h3><div class="discipline-tags"><p class="discipline-tag">Landscape</p><p class="discipline-tag">Street</p><p class="discipline-tag">Wanderlust</p></div></div>
       <div class="discipline-col"><div class="discipline-rule"></div><h3 class="discipline-title">Product</h3><div class="discipline-tags"><p class="discipline-tag">Minimal</p><p class="discipline-tag">Studio</p><p class="discipline-tag">Precision</p></div></div>
       <div class="discipline-col"><div class="discipline-rule"></div><h3 class="discipline-title">Personal</h3><div class="discipline-tags"><p class="discipline-tag">Gadgets</p><p class="discipline-tag">Experiments</p><p class="discipline-tag">Process</p></div></div>
     </div>
@@ -558,10 +782,21 @@ footer .inner{max-width:1280px;margin:0 auto}
   <div class="inquire-section">
     <div class="inquire-marker"><div class="m-line"></div><p>Inquire</p></div>
     <p class="inquire-body">Available for commissions worldwide.</p>
-    <a href="mailto:ask@narrativesbydm.com" class="inquire-email">
-      ask@narrativesbydm.com
+    <a href="mailto:mail@narrativesbydm.com" class="inquire-email">
+      mail@narrativesbydm.com
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ff6b2b" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
     </a>
+  </div>
+
+  <!-- SOCIAL LINKS -->
+  <div class="info-social-section">
+    <div class="section-marker" style="margin-bottom:32px"><div class="marker-line"></div><span class="marker-label">Find me on</span></div>
+    <div class="social-links">
+      <a href="https://www.instagram.com/dilshad.majeeth" target="_blank" rel="noopener noreferrer" class="social-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg><span>Instagram</span></a>
+      <a href="https://www.youtube.com/@narrativesbydm5019" target="_blank" rel="noopener noreferrer" class="social-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-1.96C18.88 4 12 4 12 4s-6.88 0-8.6.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.94 1.96C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg><span>Youtube</span></a>
+      <a href="https://www.linkedin.com/in/dilshadmajeeth" target="_blank" rel="noopener noreferrer" class="social-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span>LinkedIn</span></a>
+      <a href="https://www.behance.net/dilshadmajeeth" target="_blank" rel="noopener noreferrer" class="social-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M6.947 4.084C7.595 4.072 8.243 4.139 8.876 4.282c.532.116 1.038.333 1.49.637.417.304.747.711.957 1.182.241.58.357 1.204.341 1.831.027.689-.149 1.37-.506 1.96-.376.557-.896 1.001-1.504 1.287.825.222 1.544.732 2.027 1.437.464.747.697 1.615.671 2.494.015.701-.13 1.396-.424 2.033-.272.555-.67 1.039-1.163 1.413-.506.37-1.077.643-1.682.807-.628.174-1.277.261-1.929.259H0V4.084h6.947zm-.413 6.285c.51.021 1.011-.131 1.423-.432.197-.175.35-.394.448-.639.097-.245.136-.51.113-.772.013-.307-.048-.613-.178-.891-.11-.221-.282-.406-.495-.533-.215-.14-.457-.233-.71-.274-.275-.053-.555-.078-.835-.073H3.241v4.63h3.293zm.178 6.615c.308.004.616-.03.916-.1.274-.061.534-.173.766-.331.227-.161.41-.374.533-.626.143-.316.208-.662.191-1.008.031-.316-.01-.635-.121-.932-.111-.297-.289-.565-.52-.783-.489-.36-1.089-.539-1.696-.503H3.241v4.283h3.471z"/><path d="M16.969 16.927c.254.235.554.417.88.533.327.117.674.165 1.02.144.549.014 1.087-.153 1.531-.475.362-.235.636-.583.78-.99H23.765c-.276 1.158-.948 2.183-1.901 2.897-.914.607-2.994.914-2.991.88-.783.01-1.56-.137-2.284-.433-.656-.274-1.244-.687-1.723-1.211-.477-.549-.844-1.186-1.08-1.874-.265-.77-.395-1.579-.381-2.393-.005-.8.129-1.595.396-2.349.358-1.061 1.044-1.981 1.958-2.629.914-.647 2.009-.988 3.129-.975.827-.017 1.645.177 2.376.563.661.363 1.231.871 1.668 1.485.447.645.767 1.369.943 2.133.194.821.263 1.666.205 2.508h-7.48c-.062.79.184 1.574.688 2.187zm3.378-5.91c-.216-.215-.475-.383-.76-.49-.284-.107-.589-.151-.885-.13-.403-.015-.803.074-1.161.259-.284.157-.533.367-.736.619-.18.237-.315.506-.396.793-.073.239-.119.486-.136.735h4.769c-.042-.65-.279-1.272-.678-1.785l-.002-.001z"/><path d="M15.644 5.122H21.62V6.65H15.644z"/></svg><span>Behance</span></a>
+    </div>
   </div>
 
   <!-- INFO FOOTER -->
@@ -570,6 +805,17 @@ footer .inner{max-width:1280px;margin:0 auto}
     <p class="loc">Based in Cochin— Available Worldwide</p>
   </div>
 </div><!-- /page-info -->
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox">
+  <div class="lb-backdrop" onclick="closeLightbox()"></div>
+  <button class="lb-close" onclick="closeLightbox()">✕</button>
+  <button class="lb-nav lb-prev" onclick="lbNav(-1)">&#8249;</button>
+  <button class="lb-nav lb-next" onclick="lbNav(1)">&#8250;</button>
+  <div class="lb-img-wrap"><img id="lb-img" src="" alt=""></div>
+  <p id="lb-caption" class="lb-caption"></p>
+  <p id="lb-counter" class="lb-counter"></p>
+</div>
 
 <!-- SCROLL TO TOP -->
 <button class="scroll-top" id="scroll-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
@@ -580,40 +826,70 @@ footer .inner{max-width:1280px;margin:0 auto}
 // ── ARCHIVE DATA ──
 const archData = {
   Automotive: [
-    {src:'https://images.unsplash.com/photo-1764053000961-9213e3cf5ec7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Rally Stage 4'},
-    {src:'https://images.unsplash.com/photo-1763142185959-be6f3dbdd31a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Motorcycle Sprint'},
-    {src:'https://images.unsplash.com/photo-1761266672031-1634e4dd4442?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Formula Open Wheel'},
-    {src:'https://images.unsplash.com/photo-1772389192562-f4196bfcb4a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Off-Road Expedition'},
-    {src:'https://images.unsplash.com/photo-1767715921148-2f85c6455da9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Vintage Classic'},
-    {src:'https://images.unsplash.com/photo-1610160950440-451084f7c98d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Dakar Expedition'},
-    {src:'https://images.unsplash.com/photo-1765202662641-d22f5a214d51?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Pit Stop'},
-    {src:'https://images.unsplash.com/photo-1762237962571-10f72e8c8a85?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Desert Crossing'},
-    {src:'https://images.unsplash.com/photo-1630160868522-6ff30d6fe7d6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Kart Sprint'},
-    {src:'https://images.unsplash.com/photo-1753007058676-709e51b19275?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Exhaust Flames'},
+    {src:'./assets/images/automotive/ARP03527.jpg',title:'Expedition'},
+    {src:'./assets/images/automotive/ARP03571.jpg',title:'Desert Run'},
+    {src:'./assets/images/automotive/ARP03573.jpg',title:'Rally Stage'},
+    {src:'./assets/images/automotive/DMF02686.jpg',title:'Motorsport'},
+    {src:'./assets/images/automotive/DMF02692.jpg',title:'Race Day'},
+    {src:'./assets/images/automotive/DMFS7414.jpg',title:'Hilux Safari'},
+    {src:'./assets/images/automotive/DMFS8931.jpg',title:'Speed'},
+    {src:'./assets/images/automotive/Statics-2.jpg',title:'Static Shot'},
+    {src:'./assets/images/automotive/DMF03794.jpg',title:'On Track'},
+    {src:'./assets/images/automotive/DMFS7628.jpg',title:'Dust & Grit'},
+    {src:'./assets/images/automotive/ARP03582.jpg',title:'Offroad'},
+    {src:'./assets/images/automotive/DMF02696.jpg',title:'Pursuit'},
+    {src:'./assets/images/automotive/DMFS7420.jpg',title:'Two Wheels'},
+    {src:'./assets/images/automotive/DMFS8933.jpg',title:'Full Throttle'},
+    {src:'./assets/images/automotive/Statics-17.jpg',title:'Studio'},
+    {src:'./assets/images/automotive/DMF03815.jpg',title:'Corner Exit'},
+    {src:'./assets/images/automotive/DMFS7421.jpg',title:'Lean'},
+    {src:'./assets/images/automotive/DMFS8942.jpg',title:'Motion'},
+    {src:'./assets/images/automotive/Statics-25.jpg',title:'Detail'},
+    {src:'./assets/images/automotive/DMF04450.jpg',title:'Pit Lane'},
   ],
   Lifestyle: [
-    {src:'https://images.unsplash.com/photo-1769050349380-7ee061d43ef9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Wedding Couple Portrait'},
-    {src:'https://images.unsplash.com/photo-1762687379484-81085b94c512?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Bride Portrait'},
-    {src:'https://images.unsplash.com/photo-1722078514112-8fc9f3dc332e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Groom Candid'},
-    {src:'https://images.unsplash.com/photo-1677677403344-029c7fcd7300?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Outdoor Ceremony'},
-    {src:'https://images.unsplash.com/photo-1706705505194-d8bdb0d9924f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Tears of Joy'},
-    {src:'https://images.unsplash.com/photo-1766098585092-f35f2ab732da?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Sunset Silhouette'},
-    {src:'https://images.unsplash.com/photo-1649263537861-c947d1fbebdd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Candid Child'},
-    {src:'https://images.unsplash.com/photo-1552915170-73c2330ae617?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Elder Wisdom'},
-    {src:'https://images.unsplash.com/photo-1766113483422-7c871de23591?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'First Dance'},
-    {src:'https://images.unsplash.com/photo-1563292674-a6d442bbc4a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Wedding Rings'},
+    {src:'./assets/images/lifestyle/DMF00630.jpg',title:'Candid'},
+    {src:'./assets/images/lifestyle/DMF07892.jpg',title:'Portrait'},
+    {src:'./assets/images/lifestyle/DMF08070.jpg',title:'Natural Light'},
+    {src:'./assets/images/lifestyle/DMF08141.jpg',title:'Golden Hour'},
+    {src:'./assets/images/lifestyle/DMF08280.jpg',title:'Intimate'},
+    {src:'./assets/images/lifestyle/DSC00776.jpg',title:'Serene'},
+    {src:'./assets/images/lifestyle/DSC02322.jpg',title:'Timeless'},
+    {src:'./assets/images/lifestyle/DSC02363.jpg',title:'Gaze'},
+    {src:'./assets/images/lifestyle/DSC02437.jpg',title:'Warmth'},
+    {src:'./assets/images/lifestyle/DSC08287.jpg',title:'Still'},
+    {src:'./assets/images/lifestyle/DMF00639.jpg',title:'Unguarded'},
+    {src:'./assets/images/lifestyle/DMF07953.jpg',title:'In Frame'},
+    {src:'./assets/images/lifestyle/DMF08196-2.jpg',title:'Soft Light'},
+    {src:'./assets/images/lifestyle/DMF08294.jpg',title:'Quiet'},
+    {src:'./assets/images/lifestyle/DSC02588.jpg',title:'Connection'},
+    {src:'./assets/images/lifestyle/DSC02755.jpg',title:'Presence'},
+    {src:'./assets/images/lifestyle/DSC03008.jpg',title:'Unfold'},
+    {src:'./assets/images/lifestyle/DSC03091.jpg',title:'The Look'},
+    {src:'./assets/images/lifestyle/DSC08307.jpg',title:'Between Moments'},
+    {src:'./assets/images/lifestyle/DMF08444.jpg',title:'Emotion'},
   ],
   Travel: [
-    {src:'https://images.unsplash.com/photo-1769594362058-d561f024a235?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Smartphone Product'},
-    {src:'https://images.unsplash.com/photo-1628072004495-19b19c64dee1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Laptop Minimal'},
-    {src:'https://images.unsplash.com/photo-1591923271591-478bb32b57ca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Wireless Earbuds'},
-    {src:'https://images.unsplash.com/photo-1697926465107-5f2dccb3341e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Mechanical Keyboard'},
-    {src:'https://images.unsplash.com/photo-1594051164364-8753eac89b0b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Camera Lens'},
-    {src:'https://images.unsplash.com/photo-1631500815814-f424d8cce20b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Drone Technology'},
-    {src:'https://images.unsplash.com/photo-1693929291343-f38cb7519d5d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Gaming Controller'},
-    {src:'https://images.unsplash.com/photo-1719075596884-2020f827a8dd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Smart Watch'},
-    {src:'https://images.unsplash.com/photo-1761005654142-819960af0658?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Headphones Audio'},
-    {src:'https://images.unsplash.com/photo-1511140973288-19bf21d7e771?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Tablet Device'},
+    {src:'./assets/images/travel/Buda-1.jpg',title:'Budapest'},
+    {src:'./assets/images/travel/Buda-3.jpg',title:'Budapest II'},
+    {src:'./assets/images/travel/Prague-1.jpg',title:'Prague'},
+    {src:'./assets/images/travel/Prague-4.jpg',title:'Prague Streets'},
+    {src:'./assets/images/travel/Switz-1.jpg',title:'Swiss Alps'},
+    {src:'./assets/images/travel/Switz-5.jpg',title:'Switzerland'},
+    {src:'./assets/images/travel/Venice-1.jpg',title:'Venice'},
+    {src:'./assets/images/travel/Venice-4.jpg',title:'Canal Life'},
+    {src:'./assets/images/travel/Verona-1.jpg',title:'Verona'},
+    {src:'./assets/images/travel/Verona-4.jpg',title:'Verona Streets'},
+    {src:'./assets/images/travel/Buda-6.jpg',title:'Budapest III'},
+    {src:'./assets/images/travel/Prague-7.jpg',title:'Prague Dusk'},
+    {src:'./assets/images/travel/Switz-9.jpg',title:'Alpine Road'},
+    {src:'./assets/images/travel/Venice-7.jpg',title:'Venetian Light'},
+    {src:'./assets/images/travel/Verona-3.jpg',title:'Old Town'},
+    {src:'./assets/images/travel/Buda-9.jpg',title:'Along the Danube'},
+    {src:'./assets/images/travel/Prague-9.jpg',title:'Czech Winter'},
+    {src:'./assets/images/travel/Switz-13.jpg',title:'Mountain Pass'},
+    {src:'./assets/images/travel/Venice-9.jpg',title:'Gondola'},
+    {src:'./assets/images/travel/Verona-6.jpg',title:'Sunset Arch'},
   ]
 };
 
@@ -624,8 +900,8 @@ function renderArch() {
   const imgs = archData[currentCat];
   const visible = imgs.slice(0, archVisible);
   const grid = document.getElementById('arch-grid');
-  grid.innerHTML = visible.map(img => `
-    <div class="arch-cell">
+  grid.innerHTML = visible.map((img, i) => `
+    <div class="arch-cell" onclick="lbOpenArch(${i})">
       <img src="${img.src}" alt="${img.title}" loading="lazy">
       <div class="arch-cell-noise noise"></div>
       <div class="arch-cell-hover"></div>
@@ -649,10 +925,18 @@ function loadMoreArch() {
 }
 
 // ── WORK TABS ──
+const tabDescriptions = {
+  travel:     'Landscapes, layovers, and long roads — the world seen through a lens that never settles.',
+  lifestyle:  'Moments that exist between breaths — the exchange of rings, the silent tear, the first look.',
+  automotive: 'Dust, heat, and horsepower. Documenting speed from the Dakar dunes to the kart track.'
+};
+
 function switchTab(tab) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
   document.querySelectorAll('.gallery-panel').forEach(p => p.classList.toggle('active', p.id === 'panel-' + tab));
   document.getElementById('work-collection-label').textContent = tab.charAt(0).toUpperCase() + tab.slice(1) + ' Collection';
+  const desc = document.getElementById('tab-desc-text');
+  if (desc) desc.innerHTML = tabDescriptions[tab] || '';
 }
 
 function scrollGallery(tab, dir) {
@@ -662,21 +946,21 @@ function scrollGallery(tab, dir) {
 
 const expandedGalleries = {};
 const expandData = {
-  gadgets:[
-    {src:'https://images.unsplash.com/photo-1724627561609-9cd3facba8d4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Vintage Camera',ratio:'3/4'},
-    {src:'https://images.unsplash.com/photo-1769986515211-40bca134a0fe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Aerial Drone',ratio:'4/5'},
-    {src:'https://images.unsplash.com/photo-1631755217717-bfb77229f733?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Mechanical Keys',ratio:'16/10'},
+  travel:[
+    {src:'./assets/images/travel/Prague-5.jpg',title:'Prague Streets',ratio:'3/4'},
+    {src:'./assets/images/travel/Switz-5.jpg',title:'Swiss Alps',ratio:'4/5'},
+    {src:'./assets/images/travel/Venice-5.jpg',title:'Canal Life',ratio:'16/10'},
   ],
-  emotions:[
-    {src:'https://images.unsplash.com/photo-1769329426751-ef72533d01cc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:"Child's Laughter",ratio:'3/4'},
-    {src:'https://images.unsplash.com/photo-1633978555421-1e67d524b227?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'First Dance',ratio:'4/5'},
-    {src:'https://images.unsplash.com/photo-1765614766404-ea15cf096bcf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Wedding Vows',ratio:'16/10'},
-    {src:'https://images.unsplash.com/photo-1566053166065-79446ba9b79f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Timeless Love',ratio:'3/4'},
+  lifestyle:[
+    {src:'./assets/images/lifestyle/DMF08280.jpg',title:'Intimate',ratio:'3/4'},
+    {src:'./assets/images/lifestyle/DSC02437.jpg',title:'Warmth',ratio:'4/5'},
+    {src:'./assets/images/lifestyle/DSC03091.jpg',title:'The Look',ratio:'16/10'},
+    {src:'./assets/images/lifestyle/DMF08444.jpg',title:'Emotion',ratio:'3/4'},
   ],
-  motorsports:[
-    {src:'https://images.unsplash.com/photo-1765202662641-d22f5a214d51?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Pit Garage',ratio:'16/10'},
-    {src:'https://images.unsplash.com/photo-1630160868522-6ff30d6fe7d6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Go Kart Speed',ratio:'4/5'},
-    {src:'https://images.unsplash.com/photo-1747865296295-fa569f8e18fd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',title:'Engine Detail',ratio:'3/4'},
+  automotive:[
+    {src:'./assets/images/automotive/DMF08527.jpg',title:'Dust & Grit',ratio:'16/10'},
+    {src:'./assets/images/automotive/DMFS7628.jpg',title:'Pit Lane',ratio:'4/5'},
+    {src:'./assets/images/automotive/ARP03571.jpg',title:'Desert Run',ratio:'3/4'},
   ],
 };
 
@@ -697,16 +981,20 @@ function expandGallery(tab) {
 // ── ROUTER ──
 const pages = ['home','work','archives','info'];
 
-function navigate(page) {
+function navigate(page, sub) {
   pages.forEach(p => {
     document.getElementById('page-'+p).classList.toggle('active', p===page);
   });
+  // sync desktop + mobile nav active states
   ['work','archives','info'].forEach(p => {
-    const el = document.getElementById('nav-'+p);
-    if(el) el.classList.toggle('active', p===page);
+    const d = document.getElementById('nav-'+p);
+    if(d) d.classList.toggle('active', p===page);
+    const m = document.getElementById('mnav-'+p);
+    if(m) m.classList.toggle('active', p===page);
   });
   window.scrollTo(0,0);
-  if(page==='archives') renderArch();
+  if(page==='archives') { renderArch(); if(sub) setTimeout(()=>switchCat(sub),10); }
+  if(page==='work' && sub) setTimeout(()=>switchTab(sub),10);
   history.pushState(null,'','?page='+page);
 }
 
@@ -732,27 +1020,19 @@ const initPage = new URLSearchParams(location.search).get('page')
   || 'home';
 showPage(initPage);
 
-// ── LOGO SVGS ──
+// ── LOGO FILES ──
 const LOGOS = [
-  { name:'BMW', svg:`<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 1.5c1.88 0 3.636.52 5.134 1.424L12 7.757 6.866 2.924A10.453 10.453 0 0 1 12 1.5zM1.5 12c0-1.88.52-3.636 1.424-5.134L7.757 12l-4.833 5.134A10.453 10.453 0 0 1 1.5 12zm10.5 10.5a10.453 10.453 0 0 1-5.134-1.424L12 16.243l5.134 4.833A10.453 10.453 0 0 1 12 22.5zm.743-11.257L17.877 6.11A10.453 10.453 0 0 1 22.5 12c0 1.88-.52 3.636-1.424 5.134L16.243 12l4.833-5.134zm-.743-.986L7.757 5.424 12 1.5l4.243 3.924zm0 2.486L7.757 18.576 12 22.5l4.243-3.924zM5.424 7.757L1.5 12l3.924 4.243L9.257 12zm13.152 0L14.743 12l3.833 4.243L22.5 12z"/></svg>` },
-  { name:'Mercedes', svg:`<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 1.263c5.93 0 10.737 4.807 10.737 10.737S17.93 22.737 12 22.737 1.263 17.93 1.263 12 6.07 1.263 12 1.263zm0 1.053a9.684 9.684 0 1 0 0 19.368A9.684 9.684 0 0 0 12 2.316zM12 3.79l.315.581L20.21 18.79a9.579 9.579 0 0 1-8.21 1.053V12.42L5.79 3.79A9.579 9.579 0 0 1 12 3.789zm0 1.737L6.947 15.158 12 11.79l5.053 3.368z"/></svg>` },
-  { name:'Porsche', svg:`<svg viewBox="0 0 180 28" xmlns="http://www.w3.org/2000/svg"><text x="0" y="22" font-family="Arial,sans-serif" font-size="26" font-weight="700" letter-spacing="6" fill="white">PORSCHE</text></svg>` },
-  { name:'VW', svg:`<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 1.714A10.286 10.286 0 1 1 12 22.286 10.286 10.286 0 0 1 12 1.714zM8.143 7.286L10.5 13.07l1.5-3.428 1.5 3.428 2.357-5.784h1.929L14.25 17.143l-2.25-5.143-2.25 5.143-3.536-9.857z"/></svg>` },
-  { name:'Ducati', svg:`<svg viewBox="0 0 120 24" xmlns="http://www.w3.org/2000/svg"><text x="0" y="19" font-family="Arial,sans-serif" font-size="22" font-weight="700" letter-spacing="3" fill="white">DUCATI</text></svg>` },
-  { name:'Triumph', svg:`<svg viewBox="0 0 148 24" xmlns="http://www.w3.org/2000/svg"><text x="0" y="19" font-family="Arial,sans-serif" font-size="22" font-weight="700" letter-spacing="3" fill="white">TRIUMPH</text></svg>` },
-  { name:'Royal Enfield', svg:`<svg viewBox="0 0 220 24" xmlns="http://www.w3.org/2000/svg"><text x="0" y="19" font-family="Arial,sans-serif" font-size="20" font-weight="700" letter-spacing="3" fill="white">ROYAL ENFIELD</text></svg>` },
-  { name:'Harley-Davidson', svg:`<svg viewBox="0 0 260 24" xmlns="http://www.w3.org/2000/svg"><text x="0" y="19" font-family="Arial,sans-serif" font-size="19" font-weight="700" letter-spacing="2" fill="white">HARLEY-DAVIDSON</text></svg>` },
-  { name:'Sony', svg:`<svg viewBox="0 0 80 24" xmlns="http://www.w3.org/2000/svg"><text x="0" y="19" font-family="Arial,sans-serif" font-size="24" font-weight="700" letter-spacing="2" fill="white">SONY</text></svg>` },
-  { name:'DJI', svg:`<svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg"><text x="0" y="19" font-family="Arial,sans-serif" font-size="24" font-weight="700" letter-spacing="2" fill="white">DJI</text></svg>` },
-  { name:'Fujifilm', svg:`<svg viewBox="0 0 130 24" xmlns="http://www.w3.org/2000/svg"><text x="0" y="19" font-family="Arial,sans-serif" font-size="21" font-weight="700" letter-spacing="1" fill="white">FUJIFILM</text></svg>` },
-  { name:'Oakley', svg:`<svg viewBox="0 0 110 24" xmlns="http://www.w3.org/2000/svg"><text x="0" y="19" font-family="Arial,sans-serif" font-size="22" font-weight="700" letter-spacing="2" fill="white">OAKLEY</text></svg>` },
-];
+  'BMW','Mercedes','Porsche','VW','Ducati','Triumph',
+  'Royal Enfield','Harley Davidson','Sony','DJI','Fujifilm','Oakley',
+  'Peak Design','Polar Pro','Breitling','Tissot','Fox','Bell',
+  'Scott','100Percent','BSA','Hero','JAWA','Yezdi','Vance Hines','Chivas Regal'
+].map(name => ({ name, src: `./assets/logos/${name}.svg` }));
 
 function logoHTML(logo) {
-  return `<div class="marquee-logo" title="${logo.name}">${logo.svg}</div>`;
+  return `<div class="marquee-logo" title="${logo.name}"><img src="${logo.src}" alt="${logo.name}"></div>`;
 }
 function logoCloudHTML(logo) {
-  return `<div class="logo-cloud-item" title="${logo.name}">${logo.svg}</div>`;
+  return `<div class="logo-cloud-item" title="${logo.name}"><img src="${logo.src}" alt="${logo.name}"></div>`;
 }
 
 // Build marquee rows (duplicate for seamless loop)
@@ -789,6 +1069,87 @@ buildLogoCloud();
 window.addEventListener('scroll', () => {
   document.getElementById('scroll-top-btn').classList.toggle('show', window.scrollY > 400);
 }, {passive:true});
+
+// ── MOBILE MENU ──
+function toggleMobileMenu() {
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const isOpen = menu.classList.toggle('open');
+  toggle.classList.toggle('open', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+}
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768) {
+    const menu = document.getElementById('mobile-menu');
+    const toggle = document.getElementById('nav-toggle');
+    if (menu && menu.classList.contains('open')) {
+      menu.classList.remove('open');
+      toggle.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+});
+
+// ── LIGHTBOX ──
+let lbPool = [];
+let lbIdx = 0;
+
+// Work page: collect all images for a tab into a flat pool
+function buildWorkPool(tab) {
+  const cards = document.querySelectorAll('#track-' + tab + ' img');
+  return Array.from(cards).map(img => ({ src: img.src, title: img.alt }));
+}
+
+function openLightbox(idx, pool) {
+  lbPool = pool;
+  lbIdx = Math.min(idx, pool.length - 1);
+  const img = document.getElementById('lb-img');
+  img.src = pool[lbIdx].src;
+  img.alt = pool[lbIdx].title || '';
+  document.getElementById('lb-caption').textContent = pool[lbIdx].title || '';
+  document.getElementById('lb-counter').textContent = (lbIdx + 1) + ' / ' + pool.length;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function lbNav(dir) {
+  lbIdx = (lbIdx + dir + lbPool.length) % lbPool.length;
+  document.getElementById('lb-img').src = lbPool[lbIdx].src;
+  document.getElementById('lb-caption').textContent = lbPool[lbIdx].title || '';
+  document.getElementById('lb-counter').textContent = (lbIdx + 1) + ' / ' + lbPool.length;
+}
+
+// Archive lightbox opener (reads from current archData pool)
+function lbOpenArch(idx) {
+  openLightbox(idx, archData[currentCat]);
+}
+
+// Work page lightbox — delegate clicks on scroll-track images
+document.addEventListener('click', e => {
+  const card = e.target.closest('.scroll-card');
+  if (!card) return;
+  const track = card.closest('.scroll-track');
+  if (!track) return;
+  const allCards = Array.from(track.querySelectorAll('.scroll-card img'));
+  const pool = allCards.map(img => ({ src: img.src, title: img.alt }));
+  const clickedImg = card.querySelector('img');
+  const idx = allCards.indexOf(clickedImg);
+  openLightbox(idx, pool);
+});
+
+// Keyboard navigation for lightbox
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') lbNav(-1);
+  if (e.key === 'ArrowRight') lbNav(1);
+});
 </script>
 </body>
 </html>
